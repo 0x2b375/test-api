@@ -10,9 +10,9 @@ import { IconField } from 'primereact/iconfield';
 import { InputIcon } from 'primereact/inputicon';
 import { Dropdown } from 'primereact/dropdown';
 import { Tag } from 'primereact/tag';
-import "primereact/resources/themes/lara-light-indigo/theme.css";
-import "primereact/resources/primereact.min.css";
-import "primeicons/primeicons.css";
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 
 import Header from './include/header';
@@ -52,10 +52,12 @@ const Index = () => {
     setFilters(_filters);
     setGlobalFilterValue(value);
   };
+  const footer = `Нийт ${data ? data.length : 0}-н төхөөрөмж байна.`;
   const renderHeader = () => {
     return (
-        <div className="flex flex-wrap gap-5 justify-content-between align-items-center">
-            <h4 className="mr-10">Devices</h4>
+        <div className="flex flex-wrap gap-5 justify-content-between align-items-center mt-6">
+            <h4 className="mr-10 text-3xl">Төхөөрөмж</h4>
+            <h4>{footer}</h4>
             <IconField iconPosition="right">
                 <InputIcon className="pi pi-search" />
                 <InputText value={globalFilterValue} onChange={onGlobalFilterChange} placeholder="Search" />
@@ -85,19 +87,19 @@ const Index = () => {
       });
   }, []);
 
-  const footer = `In total there are ${data ? data.length : 0} device.`;
+ 
   return (
     <div>
       <Header />
       <div className='card'>
-      <DataTable value={data} showGridlines header={header} footer={footer} paginator rows={10} rowsPerPageOptions={[5, 10, 25, 50]} removableSort  sortMode="multiple" tableStyle={{ minWidth: '80rem' } } dataKey="id" selectionMode="checkbox" selection={selectedDevices} onSelectionChange={(e) => setSelectedDevices(e.value)} filters={filters} filterDisplay="menu" globalFilterFields={['device_id', 'status', 'cumulative_flow', 'received_datetime"', 'serial_number', 'device_type']} emptyMessage="No devices found." ca>
+      <DataTable value={data} showGridlines header={header} paginator rows={10} rowsPerPageOptions={[5, 10, 25, 50]} removableSort  sortMode="multiple" tableStyle={{ minWidth: '80rem' } } dataKey="id" selectionMode="checkbox" selection={selectedDevices} onSelectionChange={(e) => setSelectedDevices(e.value)} filters={filters} filterDisplay="menu" globalFilterFields={['device_id', 'status', 'cumulative_flow', 'received_datetime"', 'serial_number', 'device_type']} emptyMessage="No devices found." ca>
         <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
-        <Column field="device_id" header="Device ID" sortable style={{ minWidth: '14rem' }} filter filterPlaceholder="Search by id"/>
-        <Column field="status" header="Status" sortable style={{ minWidth: '12rem' }} filter filterMenuStyle={{ width: '14rem' }} body={statusBodyTemplate} filterElement={statusFilterTemplate} />
-        <Column field="cumulative_flow" header="Cumulative Flow" sortable dataType="numeric" style={{ minWidth: '12rem' }} filter filterPlaceholder="Search by flow"/>
-        <Column field="received_datetime" header="Datetime" sortable style={{ minWidth: '12rem' }} filter filterPlaceholder="Search by date"/>
-        <Column field="serial_number" header="Serial Number" sortable style={{ minWidth: '12rem' }} filter filterPlaceholder="Search by serial"/>
-        <Column field="device_type" header="Device Type" sortable style={{ minWidth: '12rem' }} filter filterPlaceholder="Search by type"/>
+        <Column field="device_id" header="Төхөөрөмжийн ID" sortable style={{ minWidth: '14rem' }} filter filterPlaceholder="Search by id"/>
+        <Column field="status" header="Төлөв" sortable style={{ minWidth: '12rem' }} filter filterMenuStyle={{ width: '14rem' }} body={statusBodyTemplate} filterElement={statusFilterTemplate} />
+        <Column field="cumulative_flow" header="Заалт" sortable dataType="numeric" style={{ minWidth: '12rem' }} filter filterPlaceholder="Search by flow"/>
+        <Column field="received_datetime" header="Хугацаа" sortable style={{ minWidth: '12rem' }} filter filterPlaceholder="Search by date"/>
+        <Column field="serial_number" header="Сериалийн дугаар" sortable style={{ minWidth: '12rem' }} filter filterPlaceholder="Search by serial"/>
+        <Column field="device_type" header="Төхөөрөмжийн төрөл" sortable style={{ minWidth: '12rem' }} filter filterPlaceholder="Search by type"/>
       </DataTable>
     </div>
     </div>

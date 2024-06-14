@@ -2,6 +2,7 @@ import "./App.css";
 import React from "react";
 import Index from "./components/Index";
 
+
 const App = () => {
   return (
     <div>
