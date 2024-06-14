@@ -32,12 +32,6 @@ const Footer = () => {
         <a href='https://www.twitter.com' className='text-white no-underline ml-4' aria-label="Twitter">
           <FontAwesomeIcon icon={faTwitter} />
         </a>
-        <a href='https://www.instagram.com' className='text-white no-underline ml-4' aria-label="Instagram">
-          <FontAwesomeIcon icon={faInstagram} />
-        </a>
-        <a href='mailto:info@example.com' className='text-white no-underline ml-4' aria-label="Email">
-          <FontAwesomeIcon icon={faEnvelope} />
-        </a>
       </div>
     </footer>
   );

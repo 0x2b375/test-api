@@ -14,7 +14,7 @@ import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
-
+import Footer from './include/footer'
 import Header from './include/header';
 
         
@@ -90,7 +90,6 @@ const Index = () => {
  
   return (
     <div>
-      <Header />
       <div className='card'>
       <DataTable value={data} showGridlines header={header} paginator rows={10} rowsPerPageOptions={[5, 10, 25, 50]} removableSort  sortMode="multiple" tableStyle={{ minWidth: '80rem' } } dataKey="id" selectionMode="checkbox" selection={selectedDevices} onSelectionChange={(e) => setSelectedDevices(e.value)} filters={filters} filterDisplay="menu" globalFilterFields={['device_id', 'status', 'cumulative_flow', 'received_datetime"', 'serial_number', 'device_type']} emptyMessage="No devices found." ca>
         <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
