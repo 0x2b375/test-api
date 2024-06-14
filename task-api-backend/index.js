@@ -9,7 +9,7 @@ app.use(express.json());
 const loginUrl = process.env.LOGIN_URL;
 const deviceUrl = process.env.DEVICE_URL;
 const loginPayload = {
-  username: "test",
+  username: process.env.LOGIN_USERNAME,
   password: process.env.LOGIN_PASSWORD,
 };
 

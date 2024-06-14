@@ -15,7 +15,9 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import 'primeflex/primeflex.css';
 
-         
+import Header from './include/header';
+
+        
 
 const Index = () => {
   const [data, setData] = useState([]);
@@ -85,7 +87,9 @@ const Index = () => {
 
   const footer = `In total there are ${data ? data.length : 0} device.`;
   return (
-    <div className='card'>
+    <div>
+      <Header />
+      <div className='card'>
       <DataTable value={data} showGridlines header={header} footer={footer} paginator rows={10} rowsPerPageOptions={[5, 10, 25, 50]} removableSort  sortMode="multiple" tableStyle={{ minWidth: '80rem' } } dataKey="id" selectionMode="checkbox" selection={selectedDevices} onSelectionChange={(e) => setSelectedDevices(e.value)} filters={filters} filterDisplay="menu" globalFilterFields={['device_id', 'status', 'cumulative_flow', 'received_datetime"', 'serial_number', 'device_type']} emptyMessage="No devices found." ca>
         <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
         <Column field="device_id" header="Device ID" sortable style={{ minWidth: '14rem' }} filter filterPlaceholder="Search by id"/>
@@ -96,6 +100,8 @@ const Index = () => {
         <Column field="device_type" header="Device Type" sortable style={{ minWidth: '12rem' }} filter filterPlaceholder="Search by type"/>
       </DataTable>
     </div>
+    </div>
+    
   )
 }
 

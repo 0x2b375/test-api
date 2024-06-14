@@ -1,3 +1,8 @@
-.p-datatable-tbody {
-  background-color: rgb(153, 106, 40);
+
+th {
+  background-color: #ffffff;
+}
+
+th:hover{
+  background-color: aliceblue;
 }
