@@ -1,19 +1,22 @@
-import "./App.css";
 import React from "react";
+import "./App.css";
+import Header from "./components/include/header";
+import Footer from "./components/include/footer";
 import Index from "./components/Index";
-import Header from "./components/include/header"
-import Footer from "./components/include/footer"
-import './App.css';
+// import Slidebar from "./components/include/slidebar";
+
 const App = () => {
   return (
-    <div className="flex-container">
+  
+    <div className='main-content'>
       <Header />
-      <div className="flex-content">
+      <div className="main-cont">
         <Index />
       </div>
       <Footer />
     </div>
-    
+  
   );
 };
+
 export default App;
