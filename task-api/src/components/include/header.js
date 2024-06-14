@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 const header = () => {
   return (
-    <nav className='flex justify-between items-center bg-gray-800 text-white p-4'>
+    <nav className='flex justify-between items-center bg-slate-800 text-white p-4'>
       <div className='navbar-left '>
         <a href='/' className='text-2xl font-bold text-white no-underline'>
           ДадлагаВэб
