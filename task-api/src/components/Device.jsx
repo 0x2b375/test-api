@@ -18,7 +18,7 @@ import 'primeflex/primeflex.css';
 
         
 
-const Index = () => {
+const Device = () => {
   const [data, setData] = useState([]);
   const [selectedDevices, setSelectedDevices] = useState([]);
   const [filters, setFilters] = useState({
@@ -106,4 +106,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default Device

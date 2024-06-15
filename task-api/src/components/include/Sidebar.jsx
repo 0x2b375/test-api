@@ -2,10 +2,10 @@
 import React from 'react'
 import {PiDevices, PiHouseSimpleLight} from 'react-icons/pi'
 import { CiSettings } from "react-icons/ci";
-const Sidebar = () => {
+const Sidebar = ({sidebarToggle}) => {
   return (
-    <div className='w-64 bg-slate-800 fixed h-full px-4 py-2'>
-      <div className='my-2 mb-4 ml-2'>
+    <div className={`${sidebarToggle? 'hidden' : 'block '} w-64 bg-slate-800 fixed h-full px-4 py-2`}>
+      <div className='my-2 mb-3 ml-2'>
         <h1 className='text-white text-xl font-bold'>Sidebar</h1>
       </div>
       <hr />

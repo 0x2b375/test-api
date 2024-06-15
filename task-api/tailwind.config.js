@@ -9,6 +9,6 @@ module.exports = {
   variants: {
     extend: {
       display: ["focus-group"]
-    }
+    },
   }
 }
