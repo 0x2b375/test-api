@@ -1,40 +1,99 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
-import {PiDevices, PiHouseSimpleLight} from 'react-icons/pi'
-import { CiSettings } from "react-icons/ci";
+// Sidebar.jsx
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-const Sidebar = ({sidebarToggle}) => {
-  return (
-    <div className={`w-64 bg-slate-800 fixed overflow-auto h-full px-4 py-4 transition-all duration-300 ${sidebarToggle ? '-translate-x-full' : 'translate-x-0'}`}>
-      <div className='my-2 mb-3'>
-        <h1 className='text-white text-xl font-bold relative bottom-2 py-1'>Sidebar</h1>
-      </div>
-      <div className=''>
-        <ul className='mt-3 text-white font-bold'>
-          <li className='mb-2 rounded hober:shadow hover:bg-blue-800 py-2'>
-            <Link to='/'>
-              <PiHouseSimpleLight className='inline-block w-[1.5rem] h-6 -mt-2 mr-3'></PiHouseSimpleLight>
-              Home
-            </Link>
-              
-          </li>
-          <li className='mb-2 rounded hober:shadow hover:bg-blue-800 py-2'>
-          <Link to='/devices'>
-              <PiDevices className='inline-block w-[1.5rem] h-6 -mt-2 mr-3'></PiDevices>
-              Devices
-          </Link>
-          </li>
-          <li className='mb-2 rounded hober:shadow hover:bg-blue-800 py-2'>
-          <Link to=''>
-              <CiSettings className='inline-block w-[1.5rem] h-6 -mt-2 mr-3'></CiSettings>
-              Settings
-          </Link>
-          </li>
-        </ul>
-      </div>
-      
-    </div>
-  )
-}
+import './Sidebar.css';
 
-export default Sidebar
+const Sidebar = ({ sidebarToggle }) => {
+  useEffect(() => {
+    const sidebar = document.getElementById('sidebar');
+    const navbar = document.getElementById('navbar');
+    if (sidebar && navbar) {
+      sidebar.style.top = `${parseInt(navbar.clientHeight) - 1}px`;
+    }
+  }, []);
+
+  return (
+    <div id="containerSidebar" className={`z-40 ${sidebarToggle ? 'show' : ''}`}>
+      <div className="navbar-menu relative z-40">
+        <nav
+          id="sidebar"
+          className={`sticky left-0 bottom-0 flex w-3/4 flex-col overflow-y-auto bg-gray-700 pt-6 pb-8 sm:max-w-xs lg:w-80 ${sidebarToggle ? 'show' : ''}`}
+        >
+          <div className="px-4 pb-6">
+            <h3 className="mb-2 text-xs font-medium uppercase text-gray-500">Main</h3>
+            <ul className="mb-8 text-sm font-medium">
+              <li>
+                <Link
+                  className="active flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                  to="#homepage"
+                >
+                  <span className="select-none">Homepage</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                  to="#link1"
+                >
+                  <span className="select-none">link1</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="px-4 pb-6">
+            <h3 className="mb-2 text-xs font-medium uppercase text-gray-500">Legal</h3>
+            <ul className="mb-8 text-sm font-medium">
+              <li>
+                <Link
+                  className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                  to="#tc"
+                >
+                  <span className="select-none">Terms and Condition</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                  to="#privacy"
+                >
+                  <span className="select-none">Privacy policy</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                  to="#imprint"
+                >
+                  <span className="select-none">Imprint</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="px-4 pb-6">
+            <h3 className="mb-2 text-xs font-medium uppercase text-gray-500">Others</h3>
+            <ul className="mb-8 text-sm font-medium">
+              <li>
+                <Link
+                  className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                  to="#ex1"
+                >
+                  <span className="select-none">...</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                  to="#ex2"
+                >
+                  <span className="select-none">...</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  );
+};
+
+export default Sidebar;
