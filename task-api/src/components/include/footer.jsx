@@ -4,12 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 
-const Footer = () => {
+const Footer = ({sidebarToggle, setSidebarToggle}) => {
   return (
-    <footer className='flex justify-between items-center bg-slate-800 text-white p-4'>
+    <footer className={`${sidebarToggle ? '' : 'ml-64'} transition-all duration-300 flex justify-between items-center bg-slate-800 text-white p-4`}>
       <div className='footer-left'>
         <p className='text-lg font-bold text-white'>
-          &copy; {new Date().getFullYear()} ДадлагаВэб
+          &copy; {new Date().getFullYear()} Дадлага Вэб
         </p>
       </div>
       <div className='footer-center'>

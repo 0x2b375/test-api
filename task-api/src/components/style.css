@@ -1,8 +1,7 @@
-
-th {
-  background-color: #ffffff;
+.p-datatable .p-datatable-tbody > tr > td {
+  border: 1px solid #dee2e6; 
 }
 
-th:hover{
-  background-color: aliceblue;
+.p-datatable .p-datatable-thead > tr > th {
+  border: 1px solid #dee2e6; 
 }

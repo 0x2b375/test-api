@@ -18,15 +18,18 @@ import Device from './components/Device';
 const App = () => {
   const [sidebarToggle, setSidebarToggle] = useState(true);
   return (
-  
-    <div className='flex'>
-      <Routes>
-        <Route path="/" element={<Dashboard sidebarToggle={sidebarToggle} setSidebarToggle={setSidebarToggle}/>}/>
-      </Routes>
-      <Sidebar sidebarToggle={sidebarToggle}/>
+    <div className='flex flex-col min-h-screen'>
+      <div className='flex flex-1'>
+        <Sidebar sidebarToggle={sidebarToggle} />
+        <div className='flex-1'>
+          <Routes>
+            <Route path="/" element={<Dashboard sidebarToggle={sidebarToggle} setSidebarToggle={setSidebarToggle} />} />
+            <Route path="/devices" element={<Device sidebarToggle={sidebarToggle} setSidebarToggle={setSidebarToggle} />} />
+          </Routes>
+        </div>
+      </div>
       
     </div>
-  
   );
 };
 
