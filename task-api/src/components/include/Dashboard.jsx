@@ -1,8 +1,8 @@
 import React from 'react'
 const Dashboard = ({sidebarToggle, setSidebarToggle}) => {
   return (
-    <div className={`transition-all duration-300`}>
-      <h1 className='flex justify-center text-3xl m-5 text-gray-700'>Dashboard</h1>
+    <div className='flex'>
+      <h1 className='flex justify-center text-3xl text-gray-500 mt-20'>Dashboard</h1>
     </div>
     
     
