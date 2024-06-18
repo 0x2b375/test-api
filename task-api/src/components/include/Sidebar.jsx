@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Sidebar = ({ sidebarToggle }) => {
   return (
     <div id="containerSidebar" className={`fixed top-0 left-0 h-full bg-slate-800 w-0 overflow-x-hidden transition-all duration-300 ${sidebarToggle ? 'w-64' : 'w-0'}`}>
-      <div className="navbar-menu relative z-40">
+      <div className="navbar-menu relative z-1">
         <nav
           id="sidebar"
           className={`sticky left-0 bottom-0 flex flex-col overflow-y-auto bg-slate-800 pt-6 pb-8 sm:max-w-xs lg:w-64 ${sidebarToggle ? 'block' : 'hidden'}`}
@@ -17,7 +17,7 @@ const Sidebar = ({ sidebarToggle }) => {
                   className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-slate-500"
                   to="/"
                 >
-                  <span className="select-none">Homepage</span>
+                  <span className="select-none">Home</span>
                 </Link>
               </li>
               <li>

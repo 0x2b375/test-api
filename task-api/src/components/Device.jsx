@@ -88,35 +88,35 @@ const Device = ({sidebarToggle, setSidebarToggle}) => {
 
  
   return (
-    <div className={`${sidebarToggle ? 'ml-80' : ''} w-full transition-all duration-300 mt-16 mr-auto flex`}>
-      
-      <DataTable
-        value={data}
-        header={header}
-        footer={footer}
-        paginator
-        rows={10}
-        rowsPerPageOptions={[5, 10, 25, 50]}
-        sortMode="multiple"
-        selectionMode="multiple"
-        selection={selectedDevices}
-        onSelectionChange={(e) => setSelectedDevices(e.value)}
-        filters={filters}
-        globalFilter={globalFilterValue}
-        emptyMessage="No devices found."
-        className="p-datatable-sm"
-        size='small'
-        tableStyle={{ minWidth: '60rem'} }
-      >
-        <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
-        <Column field="device_id" header="Device ID" sortable filter></Column>
-        <Column field="status" header="Status" sortable filter body={statusBodyTemplate} filterElement={statusFilterTemplate}></Column>
-        <Column field="cumulative_flow" header="Cumulative Flow" sortable filter></Column>
-        <Column field="received_datetime" header="Received Date" sortable filter></Column>
-        <Column field="serial_number" header="Serial Number" sortable filter></Column>
-        <Column field="device_type" header="Device Type" sortable filter></Column>
-      </DataTable>
-      
+    <div className={`${sidebarToggle ? 'ml-60' : ''} w-full transition-all duration-300 mt-16`}>
+      <div className='card'>
+        <DataTable
+          value={data}
+          header={header}
+          footer={footer}
+          paginator
+          rows={10}
+          rowsPerPageOptions={[5, 10, 25, 50]}
+          sortMode="multiple"
+          selectionMode="multiple"
+          selection={selectedDevices}
+          onSelectionChange={(e) => setSelectedDevices(e.value)}
+          filters={filters}
+          globalFilter={globalFilterValue}
+          emptyMessage="No devices found."
+          className="p-datatable-sm"
+          size='small'
+          tableStyle={{ minWidth: '60rem'} }
+        >
+          <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
+          <Column field="device_id" header="Device ID" sortable filter></Column>
+          <Column field="status" header="Status" sortable filter body={statusBodyTemplate} filterElement={statusFilterTemplate}></Column>
+          <Column field="cumulative_flow" header="Cumulative Flow" sortable filter></Column>
+          <Column field="received_datetime" header="Received Date" sortable filter></Column>
+          <Column field="serial_number" header="Serial Number" sortable filter></Column>
+          <Column field="device_type" header="Device Type" sortable filter></Column>
+        </DataTable>
+      </div>
     </div>
     
   )
