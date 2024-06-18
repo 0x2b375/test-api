@@ -1,34 +1,37 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link,
-} from "react-router-dom";
-import "./App.css";
-import Header from "./components/include/header";
-import Footer from "./components/include/footer";
-import Sidebar from "./components/include/Sidebar";
-import Dashboard from "./components/include/Dashboard";
-import Device from './components/Device';
-// import Home from "./components/Home"
-// import Slidebar from "./components/include/slidebar";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
+import Home from "./components/include/Dashboard";
+import Devices from "./components/Device";
+import Sidebar from "./components/include/Sidebar";
+import Navbar from "./components/include/Navbar";
 const App = () => {
-  const [sidebarToggle, setSidebarToggle] = useState(true);
+  const [sidebarToggle, setSidebarToggle] = useState(false);
   return (
-    <div className='flex flex-col min-h-screen'>
-      <div className='flex flex-1'>
-        <Sidebar sidebarToggle={sidebarToggle} />
+    <div className='flex'>
+      <div className='flex'>
+        <Navbar sidebarToggle={sidebarToggle} setSidebarToggle={setSidebarToggle}/>
+        <Sidebar sidebarToggle={sidebarToggle} setSidebarToggle={setSidebarToggle}/>
         <div className='flex-1'>
           <Routes>
-            <Route path="/" element={<Dashboard sidebarToggle={sidebarToggle} setSidebarToggle={setSidebarToggle} />} />
-            <Route path="/devices" element={<Device sidebarToggle={sidebarToggle} setSidebarToggle={setSidebarToggle} />} />
+            <Route
+              path='/'
+              sidebarToggle={sidebarToggle}
+              setSidebarToggle={setSidebarToggle}
+              element={<Home />}
+            />
+            <Route
+              path='/devices'
+              element={
+                <Devices
+                  sidebarToggle={sidebarToggle}
+                  setSidebarToggle={setSidebarToggle}
+                />
+              }
+            />
           </Routes>
         </div>
       </div>
-      
     </div>
   );
 };

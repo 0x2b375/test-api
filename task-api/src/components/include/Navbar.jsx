@@ -1,8 +1,8 @@
+// Import FontAwesome icons
+import { FaBars } from 'react-icons/fa';
 
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaBars } from 'react-icons/fa6';
 
 const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,7 +24,7 @@ const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
     <div className="transition-all duration-300 w-full z-40 fixed top-0 text-white bg-slate-800 dark-mode:text-gray-200 dark-mode:bg-gray-800">
       <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
         <div className="p-4 flex flex-row items-center justify-between">
-          <FaBars className="text-white me-4 cursor-pointer" onClick={() => setSidebarToggle(!sidebarToggle)} />
+          <FaBars className="text-white mr-4 cursor-pointer" onClick={() => setSidebarToggle(prev => !prev)} />
           <Link
             to="/"
             className="text-lg font-semibold tracking-widest text-white uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline"
@@ -90,19 +90,19 @@ const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
               <div className="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
                 <div className="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
                   <Link
-                    className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                    className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg text-black hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     to="/link1"
                   >
                     Link #1
                   </Link>
                   <Link
-                    className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                    className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg text-black dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     to="/link2"
                   >
                     Link #2
                   </Link>
                   <Link
-                    className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                    className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg text-black dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     to="/link3"
                   >
                     Link #3
