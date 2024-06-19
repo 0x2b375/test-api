@@ -52,26 +52,26 @@ const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
             className="px-4 py-2 mt-2 text-sm flex items-center font-semibold text-white rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
             to="/devices"
           >
-            Device
+            Төхөөрөмж
           </Link>
           <Link
             className="px-4 py-2 mt-2 text-sm font-semibold flex items-center bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
             to="/about"
           >
-            About
+            Мэдээлэл
           </Link>
           <Link
             className="px-4 py-2 mt-2 text-sm font-semibold flex items-center bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
             to="/contact"
           >
-            Contact
+            Холбогдох
           </Link>
           <div className="relative" onBlur={closeDropdown}>
             <button
               onClick={toggleDropdown}
               className="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
             >
-              <span>Profile</span>
+              <span>Профайл</span>
               <svg
                 fill="currentColor"
                 viewBox="0 0 20 20"
@@ -91,19 +91,19 @@ const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
                     className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg text-black hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     to="/link1"
                   >
-                    Login
+                    Нэвтрэх
                   </Link>
                   <Link
                     className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg text-black hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     to="/link2"
                   >
-                    Sign Up
+                    Бүртгүүлэх
                   </Link>
                   <Link
                     className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg text-black hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     to="/link3"
                   >
-                    Log Out
+                    Гарах
                   </Link>
                 </div>
               </div>
