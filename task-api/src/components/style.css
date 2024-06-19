@@ -10,7 +10,7 @@
     text-align: center;
 }
 
-/* tailwind.css */
+
 .table-gridlines {
   @apply border-collapse border border-gray-200;
 }
@@ -21,6 +21,6 @@
 }
 
 .table-gridlines th {
-  @apply border border-gray-200;
+  @apply border border-gray-200; /* Thicker border for the header */
 }
 

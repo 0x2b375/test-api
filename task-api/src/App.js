@@ -11,7 +11,7 @@ const App = () => {
   const [sidebarToggle, setSidebarToggle] = useState(false);
 
   return (
-    <div className='flex flex-col min-h-screen' style={{backgroundColor: '#201f31'}}>
+    <div className='flex flex-col min-h-screen'>
       <Navbar sidebarToggle={sidebarToggle} setSidebarToggle={setSidebarToggle} />
       <div className='flex flex-1'>
         <Sidebar sidebarToggle={sidebarToggle} setSidebarToggle={setSidebarToggle} />

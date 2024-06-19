@@ -27,7 +27,7 @@ const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
           <FaBars className="text-white mr-4 cursor-pointer" onClick={() => setSidebarToggle(prev => !prev)} />
           <Link
             to="/"
-            className="text-lg font-semibold tracking-widest text-white uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline"
+            className="text-lg font-semibold tracking-widest text-white rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline"
           >
             Дадлага Вэб
           </Link>
