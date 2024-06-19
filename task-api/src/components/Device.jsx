@@ -57,7 +57,7 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
                 <h4>{footer}</h4>
                 <IconField iconPosition="right">
                     <InputIcon className="pi pi-search" />
-                    <InputText value={globalFilterValue} onChange={onGlobalFilterChange} placeholder="Search" className='text-sm' />
+                    <InputText value={globalFilterValue} onChange={onGlobalFilterChange} placeholder="Search" className='text-sm p-2 border rounded-lg border-gray-300' />
                 </IconField>
             </div>
         );
