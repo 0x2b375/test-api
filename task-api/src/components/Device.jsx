@@ -1,6 +1,7 @@
-// Device.jsx
+/* eslint-disable default-case */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './style.css';
 import { FilterMatchMode } from 'primereact/api';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
@@ -9,12 +10,14 @@ import { IconField } from 'primereact/iconfield';
 import { InputIcon } from 'primereact/inputicon';
 import { Dropdown } from 'primereact/dropdown';
 import { Tag } from 'primereact/tag';
+import { utils, writeFile } from 'xlsx';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
-
-const Device = ({ sidebarToggle }) => {
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+const Device = ({ sidebarToggle, setSidebarToggle }) => {
     const [data, setData] = useState([]);
     const [selectedDevices, setSelectedDevices] = useState([]);
     const [filters, setFilters] = useState({
@@ -48,16 +51,43 @@ const Device = ({ sidebarToggle }) => {
     };
 
     const footer = `Нийт ${data ? data.length : 0}-н төхөөрөмж байна.`;
-
+    const exportToExcel = () => {
+        const worksheet = utils.json_to_sheet(data);
+        const workbook = utils.book_new();
+        utils.book_append_sheet(workbook, worksheet, "Devices");
+        writeFile(workbook, "Devices.xlsx");
+    };
+    const showConfirmDialog = () => {
+        confirmAlert({
+            title: 'Баталгаажуулна уу',
+            message: 'Excel-рүү хувиргахдаа итгэлтэй байна уу?',
+            buttons: [
+                {
+                    label: 'Тийм',
+                    onClick: () => exportToExcel()
+                },
+                {
+                    label: 'Үгүй',
+                    onClick: () => {}
+                }
+            ],
+            closeOnEscape: true,
+            closeOnClickOutside: true,
+        });
+    };
     const renderHeader = () => {
         return (
             <div className="flex flex-wrap gap-5 justify-content-between align-items-center">
                 <h4 className="mr-10 text-3xl">Төхөөрөмж</h4>
                 <h4>{footer}</h4>
+                <button onClick={showConfirmDialog} className="px-4 py-2 bg-slate-500 text-white rounded-lg">
+                    Excel-рүү хөрвүүлэх
+                </button>
                 <IconField iconPosition="right">
                     <InputIcon className="pi pi-search" />
-                    <InputText value={globalFilterValue} onChange={onGlobalFilterChange} placeholder="Search" className='text-sm p-2 border rounded-lg border-gray-300' />
+                    <InputText value={globalFilterValue} onChange={onGlobalFilterChange} placeholder="Хайх..." className='text-sm p-2 border rounded-lg border-gray-300' />
                 </IconField>
+                
             </div>
         );
     };
@@ -88,40 +118,44 @@ const Device = ({ sidebarToggle }) => {
             });
     }, []);
 
+    
+
     return (
-        <main className={`pt-20 ${sidebarToggle ? 'ml-80' : ''} transition-all duration-300`}>
-            <div className='card'>
-                <div className="flex justify-content-center align-items-center mb-4 gap-2">
+        <main>
+            <div className={`${sidebarToggle ? 'ml-80' : ''} w-full transition-all duration-300 my-24`}>
+                <div className='card'>
+                    <div className="flex mb-4 gap-2">
+                    </div>
+                    <DataTable
+                        value={data}
+                        header={header}
+                        paginator
+                        stripedRows
+                        rows={10}
+                        rowsPerPageOptions={[5, 10, 25, 50]}
+                        sortMode="multiple"
+                        selectionMode="multiple"
+                        selection={selectedDevices}
+                        onSelectionChange={(e) => setSelectedDevices(e.value)}
+                        filters={filters}
+                        globalFilter={globalFilterValue}
+                        globalFilterFields={['device_id', 'status', 'cumulative_flow', 'received_datetime', 'serial_number', 'device_type']}
+                        emptyMessage="No devices found."
+                        className="p-datatable-sm table-gridlines"
+                        size='small'
+                        removableSort
+                        filterDisplay='row'
+                        tableStyle={{ minWidth: '80rem' }}
+                    >
+                        <Column selectionMode="multiple" headerStyle={{ width: '3rem', textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
+                        <Column field="device_id" header="Төхөөрөмжийн ID" sortable filter filterPlaceholder="Search by ID" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
+                        <Column field="status" header="Төлөв" sortable filter body={statusBodyTemplate} filterElement={statusRowFilterTemplate} filterMenuStyle={{ width: '14rem' }} style={{ minWidth: '12rem' }} headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
+                        <Column field="cumulative_flow" header="Заалт" sortable filter filterPlaceholder="Search by flow" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
+                        <Column field="received_datetime" header="Хугацаа" sortable filter filterPlaceholder="Search by date" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
+                        <Column field="serial_number" header="Сериалийн дугаар" sortable filter filterPlaceholder="Search by serial" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
+                        <Column field="device_type" header="Төхөөрөмжийн төрөл" sortable filter filterPlaceholder="Search by type" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
+                    </DataTable>
                 </div>
-                <DataTable
-                    value={data}
-                    header={header}
-                    paginator
-                    stripedRows
-                    rows={10}
-                    rowsPerPageOptions={[5, 10, 25, 50]}
-                    sortMode="multiple"
-                    selectionMode="multiple"
-                    selection={selectedDevices}
-                    onSelectionChange={(e) => setSelectedDevices(e.value)}
-                    filters={filters}
-                    globalFilter={globalFilterValue}
-                    globalFilterFields={['device_id', 'status', 'cumulative_flow', 'received_datetime', 'serial_number', 'device_type']}
-                    emptyMessage="No devices found."
-                    className="p-datatable-sm table-gridlines"
-                    size='small'
-                    removableSort
-                    filterDisplay='row'
-                    tableStyle={{ minWidth: '60rem' }}
-                >
-                    <Column selectionMode="multiple" headerStyle={{ width: '3rem', textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
-                    <Column field="device_id" header="Төхөөрөмжийн ID" sortable filter filterPlaceholder="Search by ID" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
-                    <Column field="status" header="Төлөв" sortable filter body={statusBodyTemplate} filterElement={statusRowFilterTemplate} filterMenuStyle={{ width: '14rem' }} style={{ minWidth: '12rem' }} headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
-                    <Column field="cumulative_flow" header="Заалт" sortable filter filterPlaceholder="Search by flow" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
-                    <Column field="received_datetime" header="Хугацаа" sortable filter filterPlaceholder="Search by date" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
-                    <Column field="serial_number" header="Сериалийн дугаар" sortable filter filterPlaceholder="Search by serial" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
-                    <Column field="device_type" header="Төхөөрөмжийн төрөл" sortable filter filterPlaceholder="Search by type" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
-                </DataTable>
             </div>
         </main>
     );
