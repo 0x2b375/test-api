@@ -11,11 +11,12 @@ const App = () => {
   const [sidebarToggle, setSidebarToggle] = useState(false);
 
   return (
-      <div className='flex flex-col min-h-screen'>
-        <Navbar sidebarToggle={sidebarToggle} setSidebarToggle={setSidebarToggle} />
-        <Sidebar sidebarToggle={sidebarToggle} setSidebarToggle={setSidebarToggle} />
-          <div className=''>
-            <Routes>
+ 
+    <div className='flex flex-col min-h-screen'>
+      <Navbar sidebarToggle={sidebarToggle} setSidebarToggle={setSidebarToggle} />
+      <Sidebar sidebarToggle={sidebarToggle} setSidebarToggle={setSidebarToggle} />
+        <div className=''>
+          <Routes>
               <Route
                 path='/'
                 element={<Home />}
@@ -28,11 +29,12 @@ const App = () => {
                   />
                 }
               />
-              <Route component={NotFoundPage} />
-            </Routes>
-          </div>
-        <Footer />
-      </div>
+              <Route path="*" element={<NotFoundPage/>} />
+          </Routes>
+        </div>
+      <Footer />
+    </div>
+      
   );
 };
 
