@@ -6,7 +6,7 @@ import Home from "./components/include/Dashboard";
 import Devices from "./components/Device";
 import Sidebar from "./components/include/Sidebar";
 import Navbar from "./components/include/Navbar";
-
+import NotFoundPage from './components/include/NotFoundPage'
 const App = () => {
   const [sidebarToggle, setSidebarToggle] = useState(false);
 
@@ -28,6 +28,7 @@ const App = () => {
                   />
                 }
               />
+              <Route component={NotFoundPage} />
             </Routes>
           </div>
         <Footer />
