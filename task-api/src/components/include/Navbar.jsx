@@ -1,8 +1,7 @@
-// Import FontAwesome icons
-import { FaBars } from 'react-icons/fa';
-
+// Navbar.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaBars } from 'react-icons/fa';
 
 const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -21,13 +20,13 @@ const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
   };
 
   return (
-    <div className="transition-all duration-300 w-full z-40 fixed top-0 text-white bg-slate-800 ">
+    <div className="fixed w-full top-0 z-40 bg-slate-800 text-white transition-all duration-300">
       <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
         <div className="p-4 flex flex-row items-center justify-between">
           <FaBars className="text-white mr-4 cursor-pointer" onClick={() => setSidebarToggle(prev => !prev)} />
           <Link
             to="/"
-            className="text-lg font-semibold tracking-widest text-white rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline"
+            className="text-lg font-semibold tracking-widest text-white rounded-lg focus:outline-none focus:shadow-outline"
           >
             Дадлага Вэб
           </Link>
@@ -71,7 +70,7 @@ const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
           <div className="relative" onBlur={closeDropdown}>
             <button
               onClick={toggleDropdown}
-              className="flex flex-row items-center w-full px-4 py-2 mt-2  text-sm font-semibold text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
+              className="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
             >
               <span>Profile</span>
               <svg
@@ -88,7 +87,7 @@ const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
             </button>
             {dropdownOpen && (
               <div className="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
-                <div className="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
+                <div className="px-2 py-2 bg-white rounded-md shadow">
                   <Link
                     className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg text-black hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     to="/link1"
@@ -96,13 +95,13 @@ const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
                     Login
                   </Link>
                   <Link
-                    className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg text-black dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                    className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg text-black hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     to="/link2"
                   >
                     Sign Up
                   </Link>
                   <Link
-                    className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg text-black dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                    className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg text-black hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     to="/link3"
                   >
                     Log Out

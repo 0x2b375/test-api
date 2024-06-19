@@ -1,7 +1,6 @@
-/* eslint-disable default-case */
+// Device.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './style.css';
 import { FilterMatchMode } from 'primereact/api';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
@@ -14,7 +13,8 @@ import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
-const Device = ({ sidebarToggle, setSidebarToggle }) => {
+
+const Device = ({ sidebarToggle }) => {
     const [data, setData] = useState([]);
     const [selectedDevices, setSelectedDevices] = useState([]);
     const [filters, setFilters] = useState({
@@ -89,8 +89,7 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
     }, []);
 
     return (
-      <main>
-        <div className={`${sidebarToggle ? 'ml-80' : ''} w-full transition-all duration-300 my-24`}>
+        <main className={`pt-20 ${sidebarToggle ? 'ml-80' : ''} transition-all duration-300`}>
             <div className='card'>
                 <div className="flex justify-content-center align-items-center mb-4 gap-2">
                 </div>
@@ -124,9 +123,7 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
                     <Column field="device_type" header="Төхөөрөмжийн төрөл" sortable filter filterPlaceholder="Search by type" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
                 </DataTable>
             </div>
-        </div>
-      </main>
-        
+        </main>
     );
 }
 
