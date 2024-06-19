@@ -17,7 +17,7 @@ const Sidebar = ({ sidebarToggle }) => {
                   className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
                   to="/"
                 >
-                  <span className="select-none">Home</span>
+                  <span className="select-none">Нүүр Хуудас</span>
                 </Link>
               </li>
               <li>
@@ -25,7 +25,7 @@ const Sidebar = ({ sidebarToggle }) => {
                   className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
                   to="/devices"
                 >
-                  <span className="select-none">Devices</span>
+                  <span className="select-none">Төхөөрөмж</span>
                 </Link>
               </li>
               <li>
@@ -33,7 +33,7 @@ const Sidebar = ({ sidebarToggle }) => {
                   className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
                   to="/about"
                 >
-                  <span className="select-none">About</span>
+                  <span className="select-none">Мэдээлэл</span>
                 </Link>
               </li>
               <li>
@@ -41,7 +41,7 @@ const Sidebar = ({ sidebarToggle }) => {
                   className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
                   to="/contact"
                 >
-                  <span className="select-none">Contact</span>
+                  <span className="select-none">Холбогдох</span>
                 </Link>
               </li>
             </ul>
