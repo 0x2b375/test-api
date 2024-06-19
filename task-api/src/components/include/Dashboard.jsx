@@ -1,8 +1,8 @@
 import React from 'react'
-const Dashboard = ({sidebarToggle, setSidebarToggle}) => {
+const Dashboard = () => {
   return (
-    <div className='flex'>
-      <h1 className='flex justify-center text-3xl text-gray-500 mt-20'>Dashboard</h1>
+    <div className='flex justify-center w-screen'>
+      <h1 className='text-3xl text-gray-500 mt-20 '>Dashboard</h1>
     </div>
     
     

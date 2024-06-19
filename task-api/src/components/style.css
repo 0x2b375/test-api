@@ -1,4 +1,5 @@
-
-.flex {
-  justify-content: center;
+.p-checkbox-box {
+  border: 1px solid #ccc !important;
+  border-radius: 6px;
+  box-shadow: none !important;
 }

@@ -92,7 +92,7 @@ const Device = ({sidebarToggle, setSidebarToggle}) => {
 
  
   return (
-    <div className={`${sidebarToggle ? 'ml-60' : ''} w-full transition-all duration-300 mt-16`}>
+    <div className={`${sidebarToggle ? 'ml-80' : ''} w-full transition-all duration-300 my-16`}>
       <div className='card'>
         <div className="flex justify-content-center align-items-center mb-4 gap-2">
         </div>
