@@ -3,18 +3,18 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = ({ sidebarToggle }) => {
   return (
-    <div id="containerSidebar" className={`fixed top-0 left-0 h-full bg-slate-800 w-0 overflow-x-hidden transition-all duration-300 ${sidebarToggle ? 'w-64' : 'w-0'}`}>
+    <div id="containerSidebar" className={`fixed z-1 top-0 left-0 h-full bg-slate-800 w-0 overflow-x-hidden transition-all duration-300 ${sidebarToggle ? 'w-64' : 'w-0'}`}>
       <div className="navbar-menu relative z-1">
         <nav
           id="sidebar"
-          className={`sticky left-0 bottom-0 flex flex-col overflow-y-auto bg-slate-800 pt-6 pb-8 sm:max-w-xs lg:w-64 ${sidebarToggle ? 'block' : 'hidden'}`}
+          className={`sticky left-0 bottom-0 top- flex flex-col overflow-y-auto pt-6 sm:max-w-xs lg:w-64 w ${sidebarToggle ? 'block' : 'hidden'}`}
         >
           <div className="px-4">
             <h3 className="mb-2 text-xs font-medium uppercase text-gray-200">Main</h3>
             <ul className="mb-8 text-sm font-medium">
               <li>
                 <Link
-                  className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-slate-500"
+                  className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
                   to="/"
                 >
                   <span className="select-none">Home</span>
@@ -22,7 +22,7 @@ const Sidebar = ({ sidebarToggle }) => {
               </li>
               <li>
                 <Link
-                  className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-slate-500"
+                  className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
                   to="/devices"
                 >
                   <span className="select-none">Devices</span>
@@ -30,7 +30,7 @@ const Sidebar = ({ sidebarToggle }) => {
               </li>
               <li>
                 <Link
-                  className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-slate-500"
+                  className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
                   to="/about"
                 >
                   <span className="select-none">About</span>
@@ -38,7 +38,7 @@ const Sidebar = ({ sidebarToggle }) => {
               </li>
               <li>
                 <Link
-                  className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-slate-500"
+                  className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
                   to="/contact"
                 >
                   <span className="select-none">Contact</span>

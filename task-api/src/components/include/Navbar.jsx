@@ -21,7 +21,7 @@ const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
   };
 
   return (
-    <div className="transition-all duration-300 w-full z-40 fixed top-0 text-white bg-slate-800 dark-mode:text-gray-200 dark-mode:bg-gray-800">
+    <div className="transition-all duration-300 w-full z-40 fixed top-0 text-white bg-slate-800">
       <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
         <div className="p-4 flex flex-row items-center justify-between">
           <FaBars className="text-white mr-4 cursor-pointer" onClick={() => setSidebarToggle(prev => !prev)} />
@@ -51,19 +51,19 @@ const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
         </div>
         <nav className={`flex-col flex-grow pb-4 md:pb-0 md:flex md:justify-end md:flex-row ${menuOpen ? 'flex' : 'hidden'}`}>
           <Link
-            className="px-4 py-2 mt-2 text-sm flex items-center font-semibold text-white rounded-lg dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+            className="px-4 py-2 mt-2 text-sm flex items-center font-semibold text-white rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
             to="/devices"
           >
             Device
           </Link>
           <Link
-            className="px-4 py-2 mt-2 text-sm font-semibold flex items-center bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+            className="px-4 py-2 mt-2 text-sm font-semibold flex items-center bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
             to="/about"
           >
             About
           </Link>
           <Link
-            className="px-4 py-2 mt-2 text-sm font-semibold flex items-center bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+            className="px-4 py-2 mt-2 text-sm font-semibold flex items-center bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
             to="/contact"
           >
             Contact
@@ -71,9 +71,9 @@ const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
           <div className="relative" onBlur={closeDropdown}>
             <button
               onClick={toggleDropdown}
-              className="flex flex-row items-center w-full px-4 py-2 mt-2  text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+              className="flex flex-row items-center w-full px-4 py-2 mt-2  text-sm font-semibold text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
             >
-              <span>Dropdown</span>
+              <span>Profile</span>
               <svg
                 fill="currentColor"
                 viewBox="0 0 20 20"
@@ -93,19 +93,19 @@ const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
                     className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg text-black hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     to="/link1"
                   >
-                    Link #1
+                    Login
                   </Link>
                   <Link
                     className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg text-black dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     to="/link2"
                   >
-                    Link #2
+                    Sign Up
                   </Link>
                   <Link
                     className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg text-black dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     to="/link3"
                   >
-                    Link #3
+                    Log Out
                   </Link>
                 </div>
               </div>
