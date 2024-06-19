@@ -77,7 +77,7 @@ const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
               <svg
                 fill="currentColor"
                 viewBox="0 0 20 20"
-                className={`inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1 ${dropdownOpen ? 'rotate-180' : 'rotate-0'}`}
+                className={`inline h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1 ${dropdownOpen ? 'rotate-180' : 'rotate-0'}`}
               >
                 <path
                   fillRule="evenodd"

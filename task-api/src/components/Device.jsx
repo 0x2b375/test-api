@@ -16,20 +16,22 @@ import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 
 
+
         
 
 const Device = ({sidebarToggle, setSidebarToggle}) => {
   const [data, setData] = useState([]);
+
   const [selectedDevices, setSelectedDevices] = useState([]);
   const [filters, setFilters] = useState({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-    device_id: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
-    status: { operator: FilterOperator.OR, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
-    device_type: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
-    received_datetime: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
-    cumulative_flow: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
-    serial_number: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
-    activity: { value: null, matchMode: FilterMatchMode.BETWEEN }
+    device_id: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    status: { value: null, matchMode: FilterMatchMode.EQUALS },
+    device_type: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    received_datetime: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    cumulative_flow: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    serial_number: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    activity: { value: null, matchMode: FilterMatchMode.CONTAINS },
 });
   const [globalFilterValue, setGlobalFilterValue] = useState('');
   const [statuses] = useState(['open', 'close'])
@@ -68,12 +70,14 @@ const Device = ({sidebarToggle, setSidebarToggle}) => {
     return <Tag value={rowData.status} severity={getSeverity(rowData.status)} />;
   };
 
-  const statusFilterTemplate = (options) => {
-      return <Dropdown value={options.value} options={statuses} onChange={(e) => options.filterCallback(e.value, options.index)} itemTemplate={statusItemTemplate} placeholder="Select One" className="p-column-filter" showClear />;
-  };
-
   const statusItemTemplate = (option) => {
       return <Tag value={option} severity={getSeverity(option)} />;
+  };
+
+  const statusRowFilterTemplate = (options) => {
+    return (
+        <Dropdown value={options.value} options={statuses} onChange={(e) => options.filterApplyCallback(e.value)} itemTemplate={statusItemTemplate} placeholder="Select One" className="p-column-filter" showClear style={{ minWidth: '12rem' }} />
+    );
   };
   const header = renderHeader();
   useEffect(() => {
@@ -90,31 +94,37 @@ const Device = ({sidebarToggle, setSidebarToggle}) => {
   return (
     <div className={`${sidebarToggle ? 'ml-60' : ''} w-full transition-all duration-300 mt-16`}>
       <div className='card'>
+        <div className="flex justify-content-center align-items-center mb-4 gap-2">
+        </div>
         <DataTable
           value={data}
           header={header}
-          footer={footer}
           paginator
+          stripedRows
           rows={10}
           rowsPerPageOptions={[5, 10, 25, 50]}
           sortMode="multiple"
           selectionMode="multiple"
+          showGridlines 
           selection={selectedDevices}
           onSelectionChange={(e) => setSelectedDevices(e.value)}
           filters={filters}
           globalFilter={globalFilterValue}
+          globalFilterFields={['device_id', 'status', 'cumulative_flow', 'received_datetime', 'serial_number', 'device_type']}
           emptyMessage="No devices found."
           className="p-datatable-sm"
           size='small'
+          removableSort
+          filterDisplay='row'
           tableStyle={{ minWidth: '60rem'} }
         >
           <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
-          <Column field="device_id" header="Device ID" sortable filter></Column>
-          <Column field="status" header="Status" sortable filter body={statusBodyTemplate} filterElement={statusFilterTemplate}></Column>
-          <Column field="cumulative_flow" header="Cumulative Flow" sortable filter></Column>
-          <Column field="received_datetime" header="Received Date" sortable filter></Column>
-          <Column field="serial_number" header="Serial Number" sortable filter></Column>
-          <Column field="device_type" header="Device Type" sortable filter></Column>
+          <Column field="device_id" header="Төхөөрөмжийн ID" sortable filter filterPlaceholder="Search by ID"></Column>
+          <Column field="status" header="Төлөв" sortable filter body={statusBodyTemplate} filterElement={statusRowFilterTemplate} filterMenuStyle={{ width: '14rem' }}  style={{ minWidth: '12rem' }} ></Column>
+          <Column field="cumulative_flow" header="Заалт" sortable filter filterPlaceholder="Search by flow"></Column>
+          <Column field="received_datetime" header="Хугацаа" sortable filter filterPlaceholder="Search by date"></Column>
+          <Column field="serial_number" header="Сериалийн дугаар" sortable filter filterPlaceholder="Search by serial"></Column>
+          <Column field="device_type" header="Төхөөрөмжийн төрөл" sortable filter filterPlaceholder="Search by type"></Column>
         </DataTable>
       </div>
     </div>
