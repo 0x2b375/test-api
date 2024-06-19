@@ -14,7 +14,7 @@ import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
-
+import Footer from './include/footer'
 const Device = ({ sidebarToggle, setSidebarToggle }) => {
     const [data, setData] = useState([]);
     const [selectedDevices, setSelectedDevices] = useState([]);
@@ -52,7 +52,7 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
 
     const renderHeader = () => {
         return (
-            <div className="flex flex-wrap gap-5 justify-content-between align-items-center mt-6">
+            <div className="flex flex-wrap gap-5 justify-content-between align-items-center">
                 <h4 className="mr-10 text-3xl">Төхөөрөмж</h4>
                 <h4>{footer}</h4>
                 <IconField iconPosition="right">
@@ -90,9 +90,10 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
     }, []);
 
     return (
-        <div className={`${sidebarToggle ? 'ml-80' : ''} w-full transition-all duration-300 my-24`}>
+      <main>
+        <div className={`${sidebarToggle ? 'ml-80' : ''} w-full transition-all duration-300 my-36`}>
             <div className='card'>
-                <div className="flex justify-content-center align-items-center mb-4 gap-2">
+                <div className="flex justify-content-center align-items-center mb-4 gap-2" >
                 </div>
                 <DataTable
                     value={data}
@@ -113,7 +114,7 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
                     size='small'
                     removableSort
                     filterDisplay='row'
-                    tableStyle={{ minWidth: '60rem' }}
+                    tableStyle={{ minWidth: '60rem'}}
                 >
                     <Column selectionMode="multiple" headerStyle={{ width: '3rem', textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
                     <Column field="device_id" header="Төхөөрөмжийн ID" sortable filter filterPlaceholder="Search by ID" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
@@ -125,6 +126,8 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
                 </DataTable>
             </div>
         </div>
+      </main>
+        
     );
 }
 

@@ -21,7 +21,7 @@ const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
   };
 
   return (
-    <div className="transition-all duration-300 w-full z-40 fixed top-0 text-white bg-slate-800">
+    <div className="transition-all duration-300 w-full z-40 fixed top-0 text-white bg-slate-800 ">
       <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
         <div className="p-4 flex flex-row items-center justify-between">
           <FaBars className="text-white mr-4 cursor-pointer" onClick={() => setSidebarToggle(prev => !prev)} />

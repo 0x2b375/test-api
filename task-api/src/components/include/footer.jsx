@@ -3,10 +3,9 @@ import * as React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
-
-const Footer = ({sidebarToggle, setSidebarToggle}) => {
+const Footer = ({ sidebarToggle }) => {
   return (
-    <footer className={`${sidebarToggle ? '' : 'ml-64'} transition-all duration-300 flex justify-between items-center bg-slate-800 text-white p-4`}>
+    <footer className={`${sidebarToggle ? 'lg:ml-64' : ''} transition-all duration-300 flex justify-between items-center bg-slate-800 text-white p-4 fixed bottom-0 w-full`}>
       <div className='footer-left'>
         <p className='text-lg font-bold text-white'>
           &copy; {new Date().getFullYear()} Дадлага Вэб
