@@ -3,15 +3,14 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = ({ sidebarToggle }) => {
   return (
-    <div id="containerSidebar" className={`fixed z-1 top-0 left-0 h-full bg-slate-800 w-0 overflow-x-hidden transition-all duration-300 ${sidebarToggle ? 'w-64' : 'w-0'}`}>
-      <div className="navbar-menu relative z-1">
+    <div className={`fixed z-20 top-0 left-0 h-full bg-slate-800 transition-all duration-300 ${sidebarToggle ? 'w-60' : 'w-0'}`}>
+      <div className={`navbar-menu relative h-full ${sidebarToggle ? 'block' : 'hidden'}`}>
         <nav
           id="sidebar"
-          className={`sticky left-0 bottom-0 top- flex flex-col overflow-y-auto pt-6 sm:max-w-xs lg:w-64 w ${sidebarToggle ? 'block' : 'hidden'}`}
+          className="flex flex-col overflow-y-auto pt-6 sm:max-w-xs lg:w-64 w-full"
         >
           <div className="px-4">
-            <h3 className="mb-2 text-xs font-medium uppercase text-gray-200">Main</h3>
-            <ul className="mb-8 text-sm font-medium">
+            <ul className="mb-8 text-sm font-medium mt-5">
               <li>
                 <Link
                   className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"

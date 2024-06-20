@@ -24,9 +24,9 @@ const images = [
   dragon10
 ];
 
-const Home = () => {
+const Home = ({sidebarToggle}) => {
   return (
-    <div className='banner relative w-full h-screen text-center overflow-hidden'>
+    <div className={`banner relative w-full h-screen text-center overflow-hidden z-99 transition-all duration-300`}>
       <div className="slider" style={{ '--quantity': images.length }}>
         {images.map((image, index) => (
           <div className="item" key={index} style={{ '--position': index + 1 }}>

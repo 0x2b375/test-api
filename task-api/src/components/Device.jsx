@@ -17,6 +17,7 @@ import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+
 const Device = ({ sidebarToggle, setSidebarToggle }) => {
     const [data, setData] = useState([]);
     const [selectedDevices, setSelectedDevices] = useState([]);
@@ -51,12 +52,14 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
     };
 
     const footer = `Нийт ${data ? data.length : 0}-н төхөөрөмж байна.`;
+
     const exportToExcel = () => {
         const worksheet = utils.json_to_sheet(data);
         const workbook = utils.book_new();
         utils.book_append_sheet(workbook, worksheet, "Devices");
         writeFile(workbook, "Devices.xlsx");
     };
+
     const showConfirmDialog = () => {
         confirmAlert({
             title: 'Баталгаажуулна уу',
@@ -75,6 +78,7 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
             closeOnClickOutside: true,
         });
     };
+
     const renderHeader = () => {
         return (
             <div className="flex flex-wrap gap-5 justify-content-between align-items-center">
@@ -87,7 +91,6 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
                     <InputIcon className="pi pi-search" />
                     <InputText value={globalFilterValue} onChange={onGlobalFilterChange} placeholder="Хайх..." className='text-sm p-2 border rounded-lg border-gray-300' />
                 </IconField>
-                
             </div>
         );
     };
@@ -118,14 +121,11 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
             });
     }, []);
 
-    
-
     return (
-        <main>
-            <div className={`${sidebarToggle ? 'ml-80' : ''} w-full transition-all duration-300 my-24`}>
+        <main className='flex flex-col p-6 md:p-12 my-6 md:my-12'>
+            <div className='responsive-table-container overflow-x-auto'>
                 <div className='card'>
-                    <div className="flex mb-4 gap-2">
-                    </div>
+                    <div className="flex mb-4 gap-2"></div>
                     <DataTable
                         value={data}
                         header={header}
@@ -143,9 +143,11 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
                         emptyMessage="No devices found."
                         className="p-datatable-sm table-gridlines"
                         size='small'
+                        scrollable
+                        scrollHeight="600px"
                         removableSort
                         filterDisplay='row'
-                        tableStyle={{ minWidth: '80rem' }}
+                        tableStyle={{ minWidth: '80rem', marginTop: '1rem' }}
                     >
                         <Column selectionMode="multiple" headerStyle={{ width: '3rem', textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
                         <Column field="device_id" header="Төхөөрөмжийн ID" sortable filter filterPlaceholder="Search by ID" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>

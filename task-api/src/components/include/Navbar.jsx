@@ -49,19 +49,19 @@ const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
         </div>
         <nav className={`middle flex-col flex-grow pb-4 md:pb-0 md:flex md:justify-center md:flex-row ${menuOpen ? 'flex' : 'hidden'}`}>
           <Link
-            className="px-4 py-2 mt-2 text-sm flex items-center font-semibold text-white rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
+            className="px-4 py-2 mt-2 text-sm flex items-center font-semibold text-white rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 transition-all duration-300"
             to="/devices"
           >
             Төхөөрөмж
           </Link>
           <Link
-            className="px-4 py-2 mt-2 text-sm font-semibold flex items-center bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
+            className="px-4 py-2 mt-2 text-sm font-semibold flex items-center bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 transition-all duration-300"
             to="/about"
           >
             Мэдээлэл
           </Link>
           <Link
-            className="px-4 py-2 mt-2 text-sm font-semibold flex items-center bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
+            className="px-4 py-2 mt-2 text-sm font-semibold flex items-center bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 transition-all duration-300"
             to="/contact"
           >
             Холбогдох
@@ -70,7 +70,7 @@ const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
             <div className="relative" onBlur={closeDropdown}>
                 <button
                   onClick={toggleDropdown}
-                  className="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
+                  className="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 transition-all duration-300"
                 >
                   <span>Профайл</span>
                   <svg

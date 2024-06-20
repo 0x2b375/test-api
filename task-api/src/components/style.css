@@ -21,6 +21,18 @@
 }
 
 .table-gridlines th {
-  @apply border border-gray-200; /* Thicker border for the header */
+  @apply border border-gray-200;
 }
+
+@media (max-width: 768px) {
+  .responsive-table-container {
+    padding: 1rem;
+  }
+
+  .p-datatable-sm .p-datatable-tbody > tr > td,
+  .p-datatable-sm .p-datatable-thead > tr > th {
+    padding: 0.5rem;
+  }
+}
+
 
