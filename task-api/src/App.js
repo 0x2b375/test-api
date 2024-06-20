@@ -32,7 +32,7 @@ const App = () => {
               <Route path="*" element={<NotFoundPage/>} />
           </Routes>
         </div>
-      <Footer />
+      <Footer sidebarToggle={sidebarToggle}/>
     </div>
       
   );
