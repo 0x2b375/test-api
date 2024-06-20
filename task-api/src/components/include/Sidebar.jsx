@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = ({ sidebarToggle }) => {
   return (
-    <div className={`fixed z-20 top-0 left-0 h-full bg-slate-800 transition-all duration-300 ${sidebarToggle ? 'w-0' : 'w-40 md:w-60'}`}>
-      <div className={`navbar-menu relative h-full ${sidebarToggle ? 'hidden' : 'block'}`}>
+    <div className={`fixed z-20 top-0 left-0 h-full bg-slate-800 transition-all duration-300 ${sidebarToggle ? 'w-40 md:w-60' : 'w-0'}`}>
+      <div className={`navbar-menu relative h-full ${sidebarToggle ? 'block' : 'hidden'}`}>
         <nav
           id="sidebar"
           className="flex flex-col pt-6 sm:max-w-xs lg:w-64 w-full"
