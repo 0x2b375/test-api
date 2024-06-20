@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Footer from './components/include/footer';
-import Home from "./components/Home";
+import Home from "./components/include/Dashboard";
 import Devices from "./components/Device";
 import Sidebar from "./components/include/Sidebar";
 import Navbar from "./components/include/Navbar";
