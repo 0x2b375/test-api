@@ -9,7 +9,7 @@ import dragon7 from '../assets/images/dragon_7.jpg';
 import dragon8 from '../assets/images/dragon_8.jpg';
 import dragon9 from '../assets/images/dragon_9.jpg';
 import dragon10 from '../assets/images/dragon_10.jpg';
-import './home.css';
+import './hero.css';
 
 const images = [
   dragon,
@@ -24,7 +24,7 @@ const images = [
   dragon10
 ];
 
-const Home = ({sidebarToggle}) => {
+const Hero = ({sidebarToggle}) => {
   return (
     <div className={`banner relative w-full h-screen text-center overflow-hidden z-99 transition-all duration-300`}>
       <div className="slider" style={{ '--quantity': images.length }}>
@@ -38,4 +38,4 @@ const Home = ({sidebarToggle}) => {
   );
 };
 
-export default Home;
+export default Hero;
