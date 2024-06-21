@@ -62,34 +62,41 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
 
     const showConfirmDialog = () => {
         confirmAlert({
-            title: 'Баталгаажуулна уу',
-            message: 'Excel-рүү хувиргахдаа итгэлтэй байна уу?',
-            buttons: [
-                {
-                    label: 'Тийм',
-                    onClick: () => exportToExcel()
-                },
-                {
-                    label: 'Үгүй',
-                    onClick: () => {}
-                }
-            ],
+            customUI: ({ onClose }) => {
+                return (
+                    <div className='custom-alert'>
+                        <p className='p-2'>Excel-рүү хувиргахдаа итгэлтэй байна уу?</p>
+                        <div className='react-confirm-alert-button-group'>
+                            <button
+                                onClick={() => {
+                                    exportToExcel();
+                                    onClose();
+                                }}
+                            >
+                                Тийм
+                            </button>
+                            <button onClick={onClose}>Үгүй</button>
+                        </div>
+                    </div>
+                );
+            },
             closeOnEscape: true,
             closeOnClickOutside: true,
         });
     };
+    
 
     const renderHeader = () => {
         return (
             <div className="flex flex-wrap gap-5 justify-content-between align-items-center text-white">
-                <h4 className="mr-10 text-3xl">Төхөөрөмж</h4>
+                <h4 className="mr-10 text-2xl">Төхөөрөмж</h4>
                 <h4>{footer}</h4>
                 <button onClick={showConfirmDialog} className="px-4 py-2 text-white hover:bg-white hover:text-gray-900 rounded-lg focus:bg-white focus:text-gray-900">
                     Excel-рүү хөрвүүлэх
                 </button>
                 <IconField iconPosition="right">
                     <InputIcon className="pi pi-search" />
-                    <InputText value={globalFilterValue} onChange={onGlobalFilterChange} placeholder="Хайх..." className='text-sm p-2 border rounded-lg border-gray-300' />
+                    <InputText value={globalFilterValue} onChange={onGlobalFilterChange} placeholder="Хайх..." className='text-sm p-2 border rounded-lg border-gray-300 text-gray-800' />
                 </IconField>
             </div>
         );

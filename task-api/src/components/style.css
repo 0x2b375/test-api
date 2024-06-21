@@ -48,4 +48,37 @@
   }
 }
 
+.custom-alert {
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+  color: white;
+  border-radius: 0.5rem;
+  padding: 4px 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 250px;
+  max-height: auto;
+}
+
+
+.custom-alert .react-confirm-alert-button-group button {
+  background: none;
+  color: white;
+  border: none;
+  width: 100px;
+  padding: 10px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.custom-alert .react-confirm-alert-button-group button:hover {
+  background-color: white;
+  color: #212121;
+}
+
 
