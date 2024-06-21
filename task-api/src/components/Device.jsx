@@ -81,10 +81,10 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
 
     const renderHeader = () => {
         return (
-            <div className="flex flex-wrap gap-5 justify-content-between align-items-center">
+            <div className="flex flex-wrap gap-5 justify-content-between align-items-center text-white">
                 <h4 className="mr-10 text-3xl">Төхөөрөмж</h4>
                 <h4>{footer}</h4>
-                <button onClick={showConfirmDialog} className="px-4 py-2 bg-slate-500 text-white rounded-lg">
+                <button onClick={showConfirmDialog} className="px-4 py-2 text-white hover:bg-white hover:text-gray-900 rounded-lg focus:bg-white focus:text-gray-900">
                     Excel-рүү хөрвүүлэх
                 </button>
                 <IconField iconPosition="right">
@@ -147,7 +147,7 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
                         scrollHeight="600px"
                         removableSort
                         filterDisplay='row'
-                        tableStyle={{ minWidth: '80rem', marginTop: '1rem' }}
+                        tableStyle={{ minWidth: '80rem' }}
                     >
                         <Column selectionMode="multiple" headerStyle={{ width: '3rem', textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
                         <Column field="device_id" header="Төхөөрөмжийн ID" sortable filter filterPlaceholder="Search by ID" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
