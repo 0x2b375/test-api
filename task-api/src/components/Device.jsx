@@ -18,7 +18,7 @@ import 'primeflex/primeflex.css';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
-const Device = ({ sidebarToggle, setSidebarToggle }) => {
+const Device = () => {
     const [data, setData] = useState([]);
     const [selectedDevices, setSelectedDevices] = useState([]);
     const [filters, setFilters] = useState({
@@ -32,7 +32,7 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
         activity: { value: null, matchMode: FilterMatchMode.CONTAINS },
         device_dn: { value: null, matchMode: FilterMatchMode.CONTAINS },
         device_user_id: { value: null, matchMode: FilterMatchMode.CONTAINS },
-        device_user_geolocation: { value: null, matchMode: FilterMatchMode.CONTAINS },
+        combined_geolocation: { value: null, matchMode: FilterMatchMode.CONTAINS },
     });
     const [globalFilterValue, setGlobalFilterValue] = useState('');
     const [statuses] = useState(['open', 'close']);
@@ -40,9 +40,9 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
     const getSeverity = (status) => {
         switch (status) {
             case 'close':
-                return 'danger';
+                return { severity: 'danger', text: 'хаалттай' };
             case 'open':
-                return 'success';
+                return { severity: 'success', text: 'нээлттэй' };
         }
     };
 
@@ -87,7 +87,6 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
             closeOnClickOutside: true,
         });
     };
-    
 
     const renderHeader = () => {
         return (
@@ -106,17 +105,36 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
     };
 
     const statusBodyTemplate = (rowData) => {
-        return <Tag value={rowData.status} severity={getSeverity(rowData.status)} />;
+        const { severity, text } = getSeverity(rowData.status);
+        return <Tag value={text} severity={severity} />;
     };
 
     const statusItemTemplate = (option) => {
-        return <Tag value={option} severity={getSeverity(option)} />;
+        const { severity, text } = getSeverity(option);
+        return <Tag value={text} severity={severity} />;
     };
 
     const statusRowFilterTemplate = (options) => {
         return (
-            <Dropdown value={options.value} options={statuses} onChange={(e) => options.filterApplyCallback(e.value)} itemTemplate={statusItemTemplate} placeholder="Select" className="p-column-filter" showClear style={{ minWidth: '0rem' }} />
+            <Dropdown value={options.value} options={statuses} onChange={(e) => options.filterApplyCallback(e.value)} itemTemplate={statusItemTemplate} placeholder="Select" className="p-column-filter" showClear style={{ minWidth: '0rem'}} />
         );
+    };
+
+    const geolocationBodyTemplate = (rowData) => {
+        const latitude = rowData.device_user_geolocation_latitude;
+        const longitude = rowData.device_user_geolocation_longitude;
+        
+        if (latitude && longitude) {
+            return `${latitude} ${longitude}`;
+        }
+        return '';
+    };
+
+    const transformData = (data) => {
+        return data.map(item => ({
+            ...item,
+            combined_geolocation: `${item.device_user_geolocation_latitude || ''} ${item.device_user_geolocation_longitude || ''}`
+        }));
     };
 
     const header = renderHeader();
@@ -124,7 +142,7 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
     useEffect(() => {
         axios.post('http://localhost:3001/api/devices')
             .then(response => {
-                setData(response.data.body);
+                setData(transformData(response.data.body));
             })
             .catch(error => {
                 console.error('Error', error);
@@ -149,7 +167,7 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
                         onSelectionChange={(e) => setSelectedDevices(e.value)}
                         filters={filters}
                         globalFilter={globalFilterValue}
-                        globalFilterFields={['device_id', 'status', 'cumulative_flow', 'received_datetime', 'serial_number', 'device_type', 'device_dn', 'device_user_id', 'device_user_geolocation']}
+                        globalFilterFields={['device_id', 'status', 'cumulative_flow', 'received_datetime', 'serial_number', 'device_type', 'device_dn', 'device_user_id', 'combined_geolocation']}
                         emptyMessage="No devices found."
                         className="p-datatable-sm table-gridlines"
                         size='small'
@@ -159,21 +177,21 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
                         filterDisplay='row'
                         tableStyle={{ minWidth: '80rem' }}
                     >
-                        <Column selectionMode="multiple" headerStyle={{ width: '3rem', textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
-                        <Column field="device_id" header="Төхөөрөмжийн ID" sortable filter filterPlaceholder="Search by ID" style={{ width: '10rem', textAlign: 'center' }}></Column>
+                        <Column selectionMode="multiple" headerStyle={{ width: '2rem', textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
+                        <Column field="device_id" header="Төхөөрөмжийн ID" sortable filter filterPlaceholder="Search.." style={{ width: '10rem', textAlign: 'center' }}></Column>
+                        <Column field="serial_number" header="Сериалийн дугаар" sortable filter filterPlaceholder="Search.." style={{ width: '10rem', textAlign: 'center' }}></Column>
                         <Column field="status" header="Төлөв" sortable filter body={statusBodyTemplate} filterElement={statusRowFilterTemplate} filterMenuStyle={{ width: '10rem' }} style={{ width: '10rem', textAlign: 'center' }}></Column>
-                        <Column field="cumulative_flow" header="Заалт" sortable filter filterPlaceholder="Search by flow" style={{ width: '10rem', textAlign: 'center' }}></Column>
-                        <Column field="received_datetime" header="Хугацаа" sortable filter filterPlaceholder="Search by date" style={{ width: '10rem', textAlign: 'center' }}></Column>
-                        <Column field="serial_number" header="Сериалийн дугаар" sortable filter filterPlaceholder="Search by serial" style={{ width: '10rem', textAlign: 'center' }}></Column>
-                        <Column field="device_type" header="Төхөөрөмжийн төрөл" sortable filter filterPlaceholder="Search by type" style={{ width: '10rem', textAlign: 'center' }}></Column>
-                        <Column field="device_dn" header="Төхөөрөмжийн диаметр" sortable filter filterPlaceholder="Search by type" style={{ width: '10rem', textAlign: 'center' }}></Column>
-                        <Column field="device_user_id" header="Хэрэглэгчийн ID" sortable filter filterPlaceholder="Search by type" style={{ width: '10rem', textAlign: 'center' }}></Column>
-                        <Column field="device_user_geolocation" header="Хаяг" sortable filter filterPlaceholder="Search by type" style={{ width: '10rem', textAlign: 'center' }}></Column>
+                        <Column field="device_type" header="Төхөөрөмжийн төрөл" sortable filter filterPlaceholder="Search.." style={{ width: '10rem', textAlign: 'center' }}></Column>
+                        <Column field="cumulative_flow" header="Заалт" sortable filter filterPlaceholder="Search.." style={{ width: '10rem', textAlign: 'center' }}></Column>
+                        <Column field="device_user_id" header="Хэрэглэгчийн ID" sortable filter filterPlaceholder="Search.." style={{ width: '10rem', textAlign: 'center' }}></Column>
+                        <Column field="combined_geolocation" body={geolocationBodyTemplate} header="Хаяг" sortable filter filterPlaceholder="Search.." style={{ width: '10rem', textAlign: 'center' }}></Column>
+                        <Column field="device_dn" header="Төхөөрөмжийн диаметр" sortable filter filterPlaceholder="Search.." style={{ width: '10rem', textAlign: 'center' }}></Column>
+                        <Column field="received_datetime" header="Хугацаа" sortable filter filterPlaceholder="Search.." style={{ width: '10rem', textAlign: 'center' }}></Column>
                     </DataTable>
                 </div>
             </div>
         </main>
     );
-}
+};
 
 export default Device;
