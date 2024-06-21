@@ -56,9 +56,9 @@ const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
           </Link>
           <Link
             className="px-4 py-2 mt-2 text-sm font-semibold flex items-center bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 transition-all duration-300"
-            to="/about"
+            to="/dashboard"
           >
-            Мэдээлэл
+            Dashboard
           </Link>
           <Link
             className="px-4 py-2 mt-2 text-sm font-semibold flex items-center bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 transition-all duration-300"

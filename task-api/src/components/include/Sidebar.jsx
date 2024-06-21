@@ -34,10 +34,10 @@ const Sidebar = ({ sidebarToggle }) => {
               <li>
                 <Link
                   className="flex items-center gap-3 rounded py-3 pl-3 pr-4 text-gray-50 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200"
-                  to="/about"
+                  to="/dashboard"
                 >
                   <FontAwesomeIcon icon={faCircleInfo} />
-                  <span className={`select-none ${sidebarToggle ? 'visible' : 'invisible'}`}>Мэдээлэл</span>
+                  <span className={`select-none ${sidebarToggle ? 'visible' : 'invisible'}`}>Dashboard</span>
                 </Link>
               </li>
               <li>
