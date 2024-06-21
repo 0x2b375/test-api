@@ -4,12 +4,20 @@
   box-shadow: none !important;
 }
 
-
-.p-datatable .p-datatable-thead > tr > th,
-.p-datatable .p-datatable-tbody > tr > td {
-    text-align: center;
+.p-column-header-content {
+  justify-content: center
 }
 
+.center-placeholder::placeholder {
+  text-align: center;
+}
+
+
+.p-inputtext {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+}
 
 .table-gridlines {
   @apply border-collapse border border-gray-200;
