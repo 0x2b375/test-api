@@ -115,7 +115,7 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
 
     const statusRowFilterTemplate = (options) => {
         return (
-            <Dropdown value={options.value} options={statuses} onChange={(e) => options.filterApplyCallback(e.value)} itemTemplate={statusItemTemplate} placeholder="Select One" className="p-column-filter" showClear style={{ minWidth: '12rem' }} />
+            <Dropdown value={options.value} options={statuses} onChange={(e) => options.filterApplyCallback(e.value)} itemTemplate={statusItemTemplate} placeholder="Select" className="p-column-filter" showClear style={{ minWidth: '0rem' }} />
         );
     };
 
@@ -167,8 +167,8 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
                         <Column field="serial_number" header="Сериалийн дугаар" sortable filter filterPlaceholder="Search by serial" style={{ width: '10rem', textAlign: 'center' }}></Column>
                         <Column field="device_type" header="Төхөөрөмжийн төрөл" sortable filter filterPlaceholder="Search by type" style={{ width: '10rem', textAlign: 'center' }}></Column>
                         <Column field="device_dn" header="Төхөөрөмжийн диаметр" sortable filter filterPlaceholder="Search by type" style={{ width: '10rem', textAlign: 'center' }}></Column>
-                        <Column field="device_user_id" header="Төхөөрөмжийн төрөл" sortable filter filterPlaceholder="Search by type" style={{ width: '10rem', textAlign: 'center' }}></Column>
-                        <Column field="device_user_geolocation" header="Төхөөрөмжийн төрөл" sortable filter filterPlaceholder="Search by type" style={{ width: '10rem', textAlign: 'center' }}></Column>
+                        <Column field="device_user_id" header="Хэрэглэгчийн ID" sortable filter filterPlaceholder="Search by type" style={{ width: '10rem', textAlign: 'center' }}></Column>
+                        <Column field="device_user_geolocation" header="Хаяг" sortable filter filterPlaceholder="Search by type" style={{ width: '10rem', textAlign: 'center' }}></Column>
                     </DataTable>
                 </div>
             </div>

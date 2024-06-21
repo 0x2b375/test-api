@@ -4,12 +4,20 @@
   box-shadow: none !important;
 }
 
-.p-column-header-content {
-  justify-content: center
+.p-datatable-sm .p-datatable-tbody > tr > td,
+  .p-datatable-sm .p-datatable-thead > tr > th {
+    text-align: center !important;
+  }
+
+.p-datatable .p-column-header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.center-placeholder::placeholder {
-  text-align: center;
+
+.p-fluid .p-inputtext {
+  width: 10vh;
 }
 
 .p-datatable-header {
@@ -45,6 +53,7 @@
   .p-datatable-sm .p-datatable-tbody > tr > td,
   .p-datatable-sm .p-datatable-thead > tr > th {
     padding: 0.5rem;
+    
   }
 }
 
