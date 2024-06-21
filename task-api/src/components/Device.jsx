@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable default-case */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -88,6 +89,8 @@ const Device = () => {
         });
     };
 
+    
+
     const renderHeader = () => {
         return (
             <div className="flex flex-wrap gap-5 justify-content-between align-items-center text-white">
@@ -135,6 +138,100 @@ const Device = () => {
             ...item,
             combined_geolocation: `${item.device_user_geolocation_latitude || ''} ${item.device_user_geolocation_longitude || ''}`
         }));
+    };
+
+    const actionBodyTemplate = (rowData) => {
+        return (
+            <div className="flex justify-content-center gap-4">
+                <button onClick={() => addUser(rowData)} className="button rounded-lg w-3 hover:bg-slate-300">
+                    <i className="pi pi-user-plus" style={{ fontSize: '1rem' }}></i>
+                </button>
+                <button onClick={() => viewDevice(rowData)} className="button rounded-lg w-3 hover:bg-slate-300">
+                    <i className="pi pi-eye" style={{ fontSize: '1rem'}}></i>
+                </button>
+            </div>
+        );
+    };
+
+    const addUser = (rowData) => {
+        const showAddDialog = (rowData) => {
+            confirmAlert({
+                customUI: ({ onClose }) => {
+                    return (
+                        <div className='user-add-alert bg-slate-700 w-96 text-white rounded-md p-4 flex justify-center items-center flex-col'>
+                            <h1 className="text-xl mb-4">Төхөөрөмжийн мэдээлэл</h1>
+                            
+                            <div className='w-full mb-4'>
+                                <p><strong>ID:</strong> {rowData.device_id}</p>
+                                <p><strong>Сериалийн дугаар:</strong> {rowData.serial_number}</p>
+                                <p><strong>Төхөөрөмжийн төрөл:</strong> {rowData.device_type}</p>
+                                <p><strong>Заалт:</strong> {rowData.cumulative_flow}</p>
+                                <p><strong>Хугацаа:</strong> {rowData.received_datetime}</p>
+                            </div>
+                            
+                            <div className='w-full mb-4'>
+                                <label htmlFor='user_id' className='block mb-1'>User ID</label>
+                                <input
+                                    type='text'
+                                    id='user_id'
+                                    className='w-full p-2 mb-4 rounded-md text-black'
+                                />
+                                <label htmlFor='address' className='block mb-1'>Address</label>
+                                <input
+                                    type='text'
+                                    id='address'
+                                    className='w-full p-2 mb-4 rounded-md text-black'
+                                />
+                            </div>
+                            
+                            <div className='flex justify-center'>
+                                <button
+                                    className='bg-slate-700 rounded-md p-3 mx-2 hover:bg-white hover:text-gray-900'
+                                    onClick={() => {
+                                        const userId = document.getElementById('user_id').value;
+                                        const address = document.getElementById('address').value;
+                                        const [latitude, longitude] = address.split(' ');
+                                        const dataToSend = {
+                                            device_id: rowData.device_id,
+                                            device_user_id: userId,
+                                            device_user_geolocation_latitude: latitude,
+                                            device_user_geolocation_longitude: longitude,
+                                        }
+                                        
+                                        axios.post('http://localhost:3001/api/user', dataToSend, {
+                                            headers: {
+                                                "Content-Type": "application/json",
+                                              },
+                                        }).then(response => {
+                                            console.log('Backend Response:', response.data);
+                                        })
+                                       
+                                       
+                                        
+                                        
+
+                                        
+                                        
+                                        onClose();
+                                    }}
+                                >
+                                    НЭМЭХ
+                                </button>
+                                <button onClick={onClose} className='bg-slate-700 rounded-md p-3 mx-2 hover:bg-white hover:text-gray-900'>ГАЗРЫН ЗУРАГ</button>
+                            </div>
+                        </div>
+                    );
+                },
+                closeOnEscape: true,
+                closeOnClickOutside: true,
+            });
+        };
+        return showAddDialog(rowData);
+    };
+    
+    const viewDevice = (rowData) => {
+        console.log('View device', rowData);
+        
     };
 
     const header = renderHeader();
@@ -187,6 +284,8 @@ const Device = () => {
                         <Column field="combined_geolocation" body={geolocationBodyTemplate} header="Хаяг" sortable filter filterPlaceholder="Search.." style={{ width: '10rem', textAlign: 'center' }}></Column>
                         <Column field="device_dn" header="Төхөөрөмжийн диаметр" sortable filter filterPlaceholder="Search.." style={{ width: '10rem', textAlign: 'center' }}></Column>
                         <Column field="received_datetime" header="Хугацаа" sortable filter filterPlaceholder="Search.." style={{ width: '10rem', textAlign: 'center' }}></Column>
+                        <Column field="" header="Үйлдэл" body={actionBodyTemplate} style={{ width: '10rem', textAlign: 'center' }}></Column>
+                        
                     </DataTable>
                 </div>
             </div>

@@ -46,6 +46,13 @@ app.post("/api/devices", async (req, res) => {
   }
 });
 
+app.post('/api/user', (req, res) => {
+  axios.post('')
+  console.log('Received Datas:', req.body);
+  res.status(200).json({ message: 'Data received successfully' });
+});
+
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
