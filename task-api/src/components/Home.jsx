@@ -31,7 +31,7 @@ const Home = () => {
       </section>
 
       <section className='recent-activity p-10 bg-gray-100'>
-        <h2 className='text-3xl font-bold text-gray-800 mb-4'>Recent Activity</h2>
+        <h2 className='text-3xl font-bold text-gray-800 mb-4'>TEST</h2>
         <p className='text-gray-600'>No recent activity.</p>
       </section>
 
