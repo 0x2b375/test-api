@@ -197,7 +197,7 @@ const Device = () => {
                                             device_user_geolocation_latitude: latitude,
                                             device_user_geolocation_longitude: longitude,
                                         }
-                                        
+
                                         axios.post('http://localhost:3001/api/user', dataToSend, {
                                             headers: {
                                                 "Content-Type": "application/json",
@@ -205,13 +205,6 @@ const Device = () => {
                                         }).then(response => {
                                             console.log('Backend Response:', response.data);
                                         })
-                                       
-                                       
-                                        
-                                        
-
-                                        
-                                        
                                         onClose();
                                     }}
                                 >

@@ -9,7 +9,7 @@ app.use(express.json());
 const loginUrl = process.env.LOGIN_URL;
 // const deviceUrl = process.env.DEVICE_URL;
 const devicesMononetUrl = process.env.DEVICESMONONET_URL;
-
+const userDataUrl = process.env.USERDATA_URL;
 const loginPayload = {
   username: process.env.LOGIN_USERNAME,
   password: process.env.LOGIN_PASSWORD,
@@ -46,10 +46,24 @@ app.post("/api/devices", async (req, res) => {
   }
 });
 
-app.post('/api/user', (req, res) => {
-  axios.post('')
-  console.log('Received Datas:', req.body);
-  res.status(200).json({ message: 'Data received successfully' });
+app.post('/api/user', async (req, res) => {
+  const loginResponse = await axios.post(loginUrl, loginPayload, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const accessToken = loginResponse.data.tokens.access;
+  axios.post(userDataUrl, req.body, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-type': 'application/json',
+    },
+  })
+
+  res.json({
+    status: 'success',
+    body: 'Device user info added successfully'
+  })
 });
 
 
