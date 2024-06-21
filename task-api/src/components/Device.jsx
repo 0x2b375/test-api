@@ -30,6 +30,9 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
         cumulative_flow: { value: null, matchMode: FilterMatchMode.CONTAINS },
         serial_number: { value: null, matchMode: FilterMatchMode.CONTAINS },
         activity: { value: null, matchMode: FilterMatchMode.CONTAINS },
+        device_dn: { value: null, matchMode: FilterMatchMode.CONTAINS },
+        device_user_id: { value: null, matchMode: FilterMatchMode.CONTAINS },
+        device_user_geolocation: { value: null, matchMode: FilterMatchMode.CONTAINS },
     });
     const [globalFilterValue, setGlobalFilterValue] = useState('');
     const [statuses] = useState(['open', 'close']);
@@ -146,7 +149,7 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
                         onSelectionChange={(e) => setSelectedDevices(e.value)}
                         filters={filters}
                         globalFilter={globalFilterValue}
-                        globalFilterFields={['device_id', 'status', 'cumulative_flow', 'received_datetime', 'serial_number', 'device_type']}
+                        globalFilterFields={['device_id', 'status', 'cumulative_flow', 'received_datetime', 'serial_number', 'device_type', 'device_dn', 'device_user_id', 'device_user_geolocation']}
                         emptyMessage="No devices found."
                         className="p-datatable-sm table-gridlines"
                         size='small'
@@ -157,12 +160,15 @@ const Device = ({ sidebarToggle, setSidebarToggle }) => {
                         tableStyle={{ minWidth: '80rem' }}
                     >
                         <Column selectionMode="multiple" headerStyle={{ width: '3rem', textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
-                        <Column field="device_id" header="Төхөөрөмжийн ID" sortable filter filterPlaceholder="Search by ID" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
-                        <Column field="status" header="Төлөв" sortable filter body={statusBodyTemplate} filterElement={statusRowFilterTemplate} filterMenuStyle={{ width: '14rem' }} style={{ minWidth: '12rem' }} headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
-                        <Column field="cumulative_flow" header="Заалт" sortable filter filterPlaceholder="Search by flow" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
-                        <Column field="received_datetime" header="Хугацаа" sortable filter filterPlaceholder="Search by date" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
-                        <Column field="serial_number" header="Сериалийн дугаар" sortable filter filterPlaceholder="Search by serial" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
-                        <Column field="device_type" header="Төхөөрөмжийн төрөл" sortable filter filterPlaceholder="Search by type" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
+                        <Column field="device_id" header="Төхөөрөмжийн ID" sortable filter filterPlaceholder="Search by ID" style={{ width: '10rem', textAlign: 'center' }}></Column>
+                        <Column field="status" header="Төлөв" sortable filter body={statusBodyTemplate} filterElement={statusRowFilterTemplate} filterMenuStyle={{ width: '10rem' }} style={{ width: '10rem', textAlign: 'center' }}></Column>
+                        <Column field="cumulative_flow" header="Заалт" sortable filter filterPlaceholder="Search by flow" style={{ width: '10rem', textAlign: 'center' }}></Column>
+                        <Column field="received_datetime" header="Хугацаа" sortable filter filterPlaceholder="Search by date" style={{ width: '10rem', textAlign: 'center' }}></Column>
+                        <Column field="serial_number" header="Сериалийн дугаар" sortable filter filterPlaceholder="Search by serial" style={{ width: '10rem', textAlign: 'center' }}></Column>
+                        <Column field="device_type" header="Төхөөрөмжийн төрөл" sortable filter filterPlaceholder="Search by type" style={{ width: '10rem', textAlign: 'center' }}></Column>
+                        <Column field="device_dn" header="Төхөөрөмжийн диаметр" sortable filter filterPlaceholder="Search by type" style={{ width: '10rem', textAlign: 'center' }}></Column>
+                        <Column field="device_user_id" header="Төхөөрөмжийн төрөл" sortable filter filterPlaceholder="Search by type" style={{ width: '10rem', textAlign: 'center' }}></Column>
+                        <Column field="device_user_geolocation" header="Төхөөрөмжийн төрөл" sortable filter filterPlaceholder="Search by type" style={{ width: '10rem', textAlign: 'center' }}></Column>
                     </DataTable>
                 </div>
             </div>
